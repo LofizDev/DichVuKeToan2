@@ -16,7 +16,9 @@ export const BookkeepingCleanup: React.FC<BookkeepingCleanupProps> = ({ section,
   if (settings) {
     const companyName = (lang === 'vi' ? settings.companyName : settings.companyNameZh) || settings.companyName;
     if (companyName) {
-      htmlContent = htmlContent.replace(/CÔNG TY TNHH DỊCH VỤ VÀ TƯ VẤN VIỆT HƯNG/g, companyName);
+      htmlContent = htmlContent
+        .replace(/CÔNG TY TNHH DỊCH VỤ VÀ TƯ VẤN VIỆT HƯNG/g, companyName)
+        .replace(/越兴服务与咨询有限公司/g, companyName);
     }
   }
 

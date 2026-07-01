@@ -3,9 +3,9 @@ import { Schema, model } from 'mongoose';
 const SettingSchema = new Schema({
   siteName: { type: String, default: 'Dịch vụ kế toán chuyên nghiệp' },
   siteNameZh: { type: String, default: '' },
-  companyName: { type: String, default: 'CÔNG TY TNHH DỊCH VỤ VÀ TƯ VẤN VIỆT HƯNG' },
-  companyNameZh: { type: String, default: '' },
-  email: { type: String, default: 'zintaxfinance@gmail.com' },
+  companyName: { type: String, default: 'CÔNG TY TNHH TƯ VẤN ZINTAX FINANCE' },
+  companyNameZh: { type: String, default: 'ZINTAX FINANCE 咨询有限公司' },
+  email: { type: String, default: 'zintaxfinance.info@gmail.com' },
   adminEmail: { type: String, default: 'zintaxfinance.info@gmail.com' },
   phone: { type: String, default: '0904846088' },
   hotline: { type: String, default: '0904.846.088' },

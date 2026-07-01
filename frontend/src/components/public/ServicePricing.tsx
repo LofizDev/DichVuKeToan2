@@ -17,7 +17,9 @@ export const ServicePricing: React.FC<ServicePricingProps> = ({ section, priceTa
   if (settings) {
     const companyName = (lang === 'vi' ? settings.companyName : settings.companyNameZh) || settings.companyName;
     if (companyName) {
-      htmlContent = htmlContent.replace(/CÔNG TY TNHH DỊCH VỤ VÀ TƯ VẤN VIỆT HƯNG/g, companyName);
+      htmlContent = htmlContent
+        .replace(/CÔNG TY TNHH DỊCH VỤ VÀ TƯ VẤN VIỆT HƯNG/g, companyName)
+        .replace(/越兴服务与咨询有限公司/g, companyName);
     }
   }
 
@@ -37,7 +39,7 @@ export const ServicePricing: React.FC<ServicePricingProps> = ({ section, priceTa
         {/* Image in middle */}
         <div className="flex justify-center mb-10">
           <img
-            src="/assets/images/ke-toan-tron-goi-1.webp"
+            src="/assets/images/ke-toan-tron-goi-1.png"
             alt="Kế toán trọn gói"
             className="rounded-lg shadow-md max-w-full h-auto object-contain"
             onError={(e) => {
