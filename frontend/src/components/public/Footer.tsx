@@ -49,10 +49,6 @@ export const Footer: React.FC<FooterProps> = ({ settings }) => {
                 <a href={`mailto:${settings?.email}`}>{settings?.email}</a>
               </span>
             </li>
-            <li className="flex flex-col">
-              <span className="text-gray-400 font-medium">{t('footer.website')}:</span>
-              <span className="mt-0.5">{window.location.hostname}</span>
-            </li>
           </ul>
         </div>
 

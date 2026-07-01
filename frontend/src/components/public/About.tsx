@@ -1,13 +1,38 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import type { Section } from '../../types';
 import { useLanguage } from '../../contexts/LanguageContext';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface AboutProps {
   section: Section | null;
 }
 
+const aboutImages = [
+  '/assets/images/about_1.jpg',
+  '/assets/images/about_2.jpg',
+  '/assets/images/about_3.jpg',
+  '/assets/images/about_4.jpg',
+  '/assets/images/about_5.jpg'
+];
+
 export const About: React.FC<AboutProps> = ({ section }) => {
   const { lang, t } = useLanguage();
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % aboutImages.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + aboutImages.length) % aboutImages.length);
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % aboutImages.length);
+  };
 
   if (!section) return null;
 
@@ -30,24 +55,61 @@ export const About: React.FC<AboutProps> = ({ section }) => {
           />
         </div>
 
-        {/* Right Badge Block / Decorative */}
-        <div className="lg:col-span-5 relative flex justify-center lg:justify-end">
-          <div className="relative w-72 h-72 md:w-80 md:h-80 rounded-3xl bg-gradient-to-tr from-[#124c8d] to-[#446084] shadow-2xl flex flex-col items-center justify-center p-8 text-center text-white transform hover:rotate-1 transition-all duration-300">
-            <div className="absolute -top-4 -left-4 w-12 h-12 bg-[#ed1c24] rounded-2xl -z-10 animate-pulse" />
-            <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-blue-100 rounded-full -z-10" />
+        {/* Right Slider Block */}
+        <div className="lg:col-span-5 relative w-full flex justify-center">
+          <div className="relative w-full max-w-md aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl group bg-white border border-gray-100">
+            {/* Images */}
+            <div className="w-full h-full relative">
+              {aboutImages.map((src, idx) => (
+                <div
+                  key={src}
+                  className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+                    idx === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                  }`}
+                >
+                  <img
+                    src={src}
+                    alt={`Hoạt động ${idx + 1}`}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+              ))}
+            </div>
 
-            <span className="text-5xl md:text-6xl font-extrabold tracking-tight mb-2 drop-shadow-md">
-              {t('about.yearsExp')}
-            </span>
-            <p className="text-sm md:text-base font-semibold uppercase tracking-wider text-blue-100 max-w-[200px] leading-snug">
-              {t('about.expLabel')}
-            </p>
+            {/* Navigation Arrows */}
+            <button
+              onClick={handlePrev}
+              className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:scale-105"
+              aria-label="Previous image"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+            <button
+              onClick={handleNext}
+              className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:scale-105"
+              aria-label="Next image"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
 
-            <div className="mt-6 w-12 h-1 bg-[#ed1c24] rounded-full" />
+            {/* Dots indicator */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+              {aboutImages.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentIndex(idx)}
+                  className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                    idx === currentIndex ? 'bg-white w-6' : 'bg-white/50 hover:bg-white/80'
+                  }`}
+                  aria-label={`Go to slide ${idx + 1}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>
     </section>
   );
 };
+
 export default About;
