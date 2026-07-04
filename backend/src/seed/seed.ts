@@ -60,7 +60,7 @@ const seed = async () => {
     console.log('Seeding sliders...');
     const sliders = [
       {
-        imageUrl: '/assets/images/anhbia1.jpg',
+        imageUrl: '/assets/images/anhbia1.png',
         altText: 'Dịch Vụ Kế Toán Chuyên Nghiệp',
         altTextZh: '专业会计服务',
         link: '#lien-he',

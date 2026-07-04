@@ -58,7 +58,7 @@ export const Header: React.FC<HeaderProps> = ({ settings }) => {
             <img
               src={settings?.logoUrl ? settings.logoUrl : '/assets/images/ketoanchuyennghiep-banner.webp'}
               alt={(lang === 'vi' ? settings?.siteName : settings?.siteNameZh) || settings?.siteName || 'Kế Toán Chuyên Nghiệp'}
-              className="w-full max-h-[120px] md:max-h-[150px] object-contain block mx-auto"
+              className="w-full h-auto block"
               onError={(e) => {
                 (e.target as HTMLImageElement).src = '/assets/images/ketoanchuyennghiep-banner.webp';
               }}

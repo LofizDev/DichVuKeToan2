@@ -103,7 +103,11 @@ html {
 }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
   color: #333;
   background-color: #fff;
+}
+
+h1, h2, h3, h4, h5, h6, button, input, textarea, select, .font-heading {
+  font-family: 'Plus Jakarta Sans', 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
 }
