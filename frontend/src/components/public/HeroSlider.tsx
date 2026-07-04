@@ -47,8 +47,9 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ sliders }) => {
               alt={altText}
               className="w-full h-full object-cover"
               onError={(e) => {
-                // fallback if copy failed
-                (e.target as HTMLImageElement).src = '/assets/images/slider3.webp';
+                const target = e.target as HTMLImageElement;
+                target.onerror = null; // stop infinite loop
+                target.src = '/assets/images/slider3.webp';
               }}
             />
             {slide.link && (

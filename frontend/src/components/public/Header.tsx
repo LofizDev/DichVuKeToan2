@@ -56,17 +56,13 @@ export const Header: React.FC<HeaderProps> = ({ settings }) => {
         <div className="relative w-full flex items-center">
           <a href="#" className="w-full block bg-white">
             <img
-              src={settings?.logoUrl ? settings.logoUrl : '/assets/images/ketoanchuyennghiep-banner.webp'}
+              src={settings?.logoUrl ? settings.logoUrl : '/assets/images/logo.png'}
               alt={(lang === 'vi' ? settings?.siteName : settings?.siteNameZh) || settings?.siteName || 'Kế Toán Chuyên Nghiệp'}
               className="w-full h-auto block"
               onError={(e) => {
-                const img = e.target as HTMLImageElement;
-                const defaultFallback = '/assets/images/ketoanchuyennghiep-banner.webp';
-                if (!img.src.endsWith(defaultFallback)) {
-                  img.src = defaultFallback;
-                } else {
-                  img.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
-                }
+                const target = e.target as HTMLImageElement;
+                target.onerror = null; // prevent infinite loop
+                target.src = '/assets/images/logo.png';
               }}
             />
           </a>
