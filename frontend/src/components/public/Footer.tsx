@@ -11,22 +11,6 @@ export const Footer: React.FC<FooterProps> = ({ settings }) => {
 
   return (
     <footer id="footer" className="bg-[#2d3a4b] text-gray-300">
-      {/* Upper footer hotline */}
-      <div className="border-b border-gray-700 py-8 px-4 bg-[#232e3d]">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="text-center md:text-left">
-            <h4 className="text-[#ed1c24] font-bold text-lg uppercase tracking-wider">{t('footer.freeHotline')}</h4>
-            <p className="text-sm text-gray-400 mt-1">{t('footer.support247')}</p>
-          </div>
-          <a
-            href={`tel:${settings?.phone}`}
-            className="text-3xl md:text-4xl font-extrabold text-white hover:text-[#ed1c24] transition-colors"
-          >
-            {settings?.hotline || settings?.phone}
-          </a>
-        </div>
-      </div>
-
       {/* Main Footer Details */}
       <div className="max-w-7xl mx-auto py-12 px-4 grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Info Column */}
