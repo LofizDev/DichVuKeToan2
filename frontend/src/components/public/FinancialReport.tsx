@@ -35,15 +35,17 @@ export const FinancialReport: React.FC<FinancialReportProps> = ({ section, price
           <p className="mb-6 font-medium text-lg text-gray-700">
             {t('financialReport.intro')}
           </p>
-          <div className="flex justify-center mb-8">
-            <img
-              src="/assets/images/bao-cao-tai-chinh-1.webp"
-              alt="Báo cáo tài chính"
-              className="rounded-lg shadow-md max-w-full h-auto"
-              onError={(e) => {
-                (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1543286386-2e659306cd6c?auto=format&fit=crop&q=80&w=600';
-              }}
-            />
+          <div className="flex justify-center mb-8 w-full">
+            <div className="w-full max-w-3xl h-[250px] sm:h-[350px] md:h-[400px] flex items-center justify-center">
+              <img
+                src="/assets/images/bao-cao-tai-chinh-1.webp"
+                alt="Báo cáo tài chính"
+                className="max-w-full max-h-full object-contain"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1543286386-2e659306cd6c?auto=format&fit=crop&q=80&w=600';
+                }}
+              />
+            </div>
           </div>
         </div>
 
@@ -106,15 +108,17 @@ export const FinancialReport: React.FC<FinancialReportProps> = ({ section, price
           </div>
         )}
 
-        <div className="flex justify-center my-8">
-          <img
-            src="/assets/images/bao-cao-tai-chinh-2.png"
-            alt="Nội dung dịch vụ Báo cáo tài chính"
-            className="rounded-lg shadow-md max-w-full h-auto"
-            onError={(e) => {
-              (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=600';
-            }}
-          />
+        <div className="flex justify-center my-8 w-full">
+          <div className="w-full max-w-4xl h-[300px] sm:h-[400px] md:h-[450px] lg:h-[500px] flex items-center justify-center">
+            <img
+              src="/assets/images/bao-cao-tai-chinh-2.png"
+              alt="Nội dung dịch vụ Báo cáo tài chính"
+              className="max-w-full max-h-full object-contain"
+              onError={(e) => {
+                (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=600';
+              }}
+            />
+          </div>
         </div>
 
         {/* Detailed Service Content */}

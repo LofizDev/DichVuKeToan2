@@ -38,9 +38,9 @@ export const About: React.FC<AboutProps> = ({ section }) => {
 
   return (
     <section id="gioi-thieu" className="py-20 bg-gray-50 text-left">
-      <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        {/* Left text content */}
-        <div className="lg:col-span-7 space-y-6">
+      <div className="max-w-7xl mx-auto px-4 space-y-12">
+        {/* Top text content */}
+        <div className="space-y-6">
           <div className="space-y-2">
             <span className="text-sm font-bold text-[#124c8d] tracking-widest uppercase block border-l-4 border-[#124c8d] pl-3">
               {t('nav.about')}
@@ -55,9 +55,9 @@ export const About: React.FC<AboutProps> = ({ section }) => {
           />
         </div>
 
-        {/* Right Slider Block */}
-        <div className="lg:col-span-5 relative w-full flex justify-center">
-          <div className="relative w-full max-w-md aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl group bg-white border border-gray-100">
+        {/* Bottom Slider Block */}
+        <div className="relative w-full flex justify-center">
+          <div className="relative w-full max-w-5xl aspect-[16/10] md:aspect-[21/9] rounded-3xl overflow-hidden shadow-2xl group bg-white border border-gray-100">
             {/* Images */}
             <div className="w-full h-full relative">
               {aboutImages.map((src, idx) => (

@@ -45,7 +45,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ sliders }) => {
             <img
               src={slide.imageUrl}
               alt={altText}
-              className="w-full h-full object-cover md:object-fill"
+              className="w-full h-full object-cover"
               onError={(e) => {
                 // fallback if copy failed
                 (e.target as HTMLImageElement).src = '/assets/images/slider3.webp';
