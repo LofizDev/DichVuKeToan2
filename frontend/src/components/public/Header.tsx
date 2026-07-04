@@ -56,11 +56,13 @@ export const Header: React.FC<HeaderProps> = ({ settings }) => {
         <div className="relative w-full flex items-center">
           <a href="#" className="w-full block bg-white">
             <img
-              src={settings?.logoUrl ? settings.logoUrl : '/assets/images/ketoanchuyennghiep-banner.webp'}
+              src={settings?.logoUrl ? settings.logoUrl : '/assets/images/logo.png'}
               alt={(lang === 'vi' ? settings?.siteName : settings?.siteNameZh) || settings?.siteName || 'Kế Toán Chuyên Nghiệp'}
               className="w-full h-auto block"
               onError={(e) => {
-                (e.target as HTMLImageElement).src = '/assets/images/ketoanchuyennghiep-banner.webp';
+                const target = e.target as HTMLImageElement;
+                target.onerror = null; // prevent infinite loop
+                target.src = '/assets/images/logo.png';
               }}
             />
           </a>
