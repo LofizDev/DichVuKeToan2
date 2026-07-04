@@ -60,7 +60,13 @@ export const Header: React.FC<HeaderProps> = ({ settings }) => {
               alt={(lang === 'vi' ? settings?.siteName : settings?.siteNameZh) || settings?.siteName || 'Kế Toán Chuyên Nghiệp'}
               className="w-full h-auto block"
               onError={(e) => {
-                (e.target as HTMLImageElement).src = '/assets/images/ketoanchuyennghiep-banner.webp';
+                const img = e.target as HTMLImageElement;
+                const defaultFallback = '/assets/images/ketoanchuyennghiep-banner.webp';
+                if (!img.src.endsWith(defaultFallback)) {
+                  img.src = defaultFallback;
+                } else {
+                  img.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+                }
               }}
             />
           </a>
