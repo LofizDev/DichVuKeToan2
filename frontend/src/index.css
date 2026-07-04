@@ -37,6 +37,17 @@
     animation: phone-vr-img-circle 1.2s infinite ease-in-out;
   }
 
+  .phone-vr-img-circle.wechat {
+    background-color: #07c160;
+    animation: phone-vr-img-circle 1.4s infinite ease-in-out;
+  }
+
+  .phone-vr-circle-fill.wechat-circle {
+    background-color: rgba(7, 193, 96, 0.15);
+    box-shadow: 0 0 0 0 rgba(7, 193, 96, 0.7);
+    animation: wechat-vr-circle-fill 2.3s infinite ease-in-out;
+  }
+
   .phone-bar {
     background-color: #124c8d;
     height: 40px;
@@ -70,6 +81,22 @@
     transform: rotate(0) scale(1) skew(1deg);
     opacity: 0.6;
     box-shadow: 0 0 12px 8px rgba(18, 76, 141, 0);
+  }
+}
+
+@keyframes wechat-vr-circle-fill {
+  0% {
+    transform: rotate(0) scale(0.5) skew(1deg);
+    opacity: 0.1;
+  }
+  30% {
+    transform: rotate(0) scale(0.7) skew(1deg);
+    opacity: 0.5;
+  }
+  100% {
+    transform: rotate(0) scale(1) skew(1deg);
+    opacity: 0.6;
+    box-shadow: 0 0 12px 8px rgba(7, 193, 96, 0);
   }
 }
 
