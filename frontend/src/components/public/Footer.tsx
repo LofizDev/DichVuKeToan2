@@ -9,6 +9,11 @@ interface FooterProps {
 export const Footer: React.FC<FooterProps> = ({ settings }) => {
   const { lang, t } = useLanguage();
 
+  const getCopyrightText = () => {
+    const rawText = (lang === 'vi' ? settings?.copyright : settings?.copyrightZh) || settings?.copyright || `© 2016 - ${new Date().getFullYear()} ZINTAX FINANCE. All rights reserved`;
+    return rawText.replace(/ketoanchuyennghiep\.com\.vn/gi, 'ZINTAX FINANCE');
+  };
+
   return (
     <footer id="footer" className="bg-[#2d3a4b] text-gray-300">
       {/* Main Footer Details */}
@@ -51,7 +56,7 @@ export const Footer: React.FC<FooterProps> = ({ settings }) => {
       {/* Copyright row */}
       <div className="bg-[#1f2937] py-6 px-4 text-xs border-t border-gray-800">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-gray-400">
-          <p>{(lang === 'vi' ? settings?.copyright : settings?.copyrightZh) || settings?.copyright || `© 2016 - ${new Date().getFullYear()} ketoanchuyennghiep.com.vn. All rights reserved`}</p>
+          <p>{getCopyrightText()}</p>
           <div className="flex items-center gap-4">
             <a href="/login" className="hover:underline hover:text-white transition-colors">
               {t('footer.adminSystem')}

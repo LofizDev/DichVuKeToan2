@@ -25,13 +25,13 @@ export const Header: React.FC<HeaderProps> = ({ settings }) => {
   }, []);
 
   const navLinks = [
-    { key: 'about', href: '#gioi-thieu' },
-    { key: 'accounting', href: '#bang-gia' },
-    { key: 'financialReport', href: '#bao-cao-tai-chinh' },
-    { key: 'bookkeeping', href: '#don-dep-so-sach' },
-    { key: 'companySetup', href: '#thanh-lap-cong-ty' },
-    { key: 'services', href: '#dich-vu' },
-    { key: 'contact', href: '#lien-he' },
+    { key: 'about', href: '/#gioi-thieu' },
+    { key: 'accounting', href: '/#bang-gia' },
+    { key: 'financialReport', href: '/#bao-cao-tai-chinh' },
+    { key: 'bookkeeping', href: '/#don-dep-so-sach' },
+    { key: 'companySetup', href: '/#thanh-lap-cong-ty' },
+    { key: 'services', href: '/#dich-vu' },
+    { key: 'contact', href: '/lien-he' },
   ];
 
   return (
@@ -118,7 +118,7 @@ export const Header: React.FC<HeaderProps> = ({ settings }) => {
               </button>
             </div>
             <a
-              href="#lien-he"
+              href="/#lien-he"
               className="bg-[#ed1c24] hover:bg-[#c81016] text-white text-[11px] xl:text-xs font-bold uppercase tracking-wider px-3.5 py-2 rounded-full shadow-md hover:shadow-lg transition-all duration-200 hover:-translate-y-0.5 whitespace-nowrap"
             >
               {t('nav.freeConsult')}
@@ -147,7 +147,7 @@ export const Header: React.FC<HeaderProps> = ({ settings }) => {
                 </button>
               </div>
               <a
-                href="#lien-he"
+                href="/#lien-he"
                 className="bg-[#ed1c24] text-white text-[10px] sm:text-xs font-bold uppercase px-2.5 py-1 rounded"
               >
                 {t('nav.consult')}
@@ -196,7 +196,7 @@ export const Header: React.FC<HeaderProps> = ({ settings }) => {
                 <p>{settings?.email}</p>
               </div>
               <a
-                href="#lien-he"
+                href="/#lien-he"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="w-full text-center bg-[#124c8d] text-white py-3 rounded-lg font-semibold uppercase text-sm tracking-wider"
               >
