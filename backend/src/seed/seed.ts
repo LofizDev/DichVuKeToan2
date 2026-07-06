@@ -51,8 +51,8 @@ const seed = async () => {
       addressZh: '越南河内市慈廉郡美亭阮机石街68号 MD Complex大楼（办公楼）6层',
       zaloLink: 'https://zalo.me/0904846088',
       googleMapEmbed: '<iframe style="border: 0;width: 100%;height: 350px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.9056249339343!2d105.76451641042732!3d21.036461787431267!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313454b5dfd4b7eb%3A0xe53bc13a699c279c!2zNjggTmd1eeG7hW4gQ8ahIFRo4bqhY2gsIE3hu7kgxJDDrG5oLCBU4burIExpw6ptLCBIw6AgTuG7mWksIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1719658765432!5m2!1svi!2s" frameborder="0" allowfullscreen=""></iframe>',
-      copyright: '© 2016 - 2026 ketoanchuyennghiep.com.vn. All rights reserved',
-      copyrightZh: '© 2016 - 2026 ketoanchuyennghiep.com.vn. 版权所有',
+      copyright: '© 2016 - 2026 ZINTAX FINANCE. All rights reserved',
+      copyrightZh: '© 2016 - 2026 ZINTAX FINANCE. 版权所有',
       logoUrl: '/assets/images/logo.png'
     });
     await settings.save();

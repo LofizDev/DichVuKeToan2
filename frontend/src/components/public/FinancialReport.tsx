@@ -6,9 +6,10 @@ interface FinancialReportProps {
   section: Section | null;
   priceTable: PriceTable | null;
   settings: Setting | null;
+  showTable?: boolean;
 }
 
-export const FinancialReport: React.FC<FinancialReportProps> = ({ section, priceTable, settings }) => {
+export const FinancialReport: React.FC<FinancialReportProps> = ({ section, priceTable, settings, showTable = true }) => {
   const { lang, t } = useLanguage();
 
   if (!section) return null;
@@ -50,7 +51,7 @@ export const FinancialReport: React.FC<FinancialReportProps> = ({ section, price
         </div>
 
         {/* Dynamic Price Table */}
-        {priceTable && (
+        {showTable && priceTable && (
           <div className="my-10 bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
             <div className="bg-[#124c8d] text-white py-4 px-6 text-center">
               <h3 className="text-xl font-bold">{(lang === 'vi' ? priceTable.tableName : priceTable.tableNameZh) || priceTable.tableName}</h3>

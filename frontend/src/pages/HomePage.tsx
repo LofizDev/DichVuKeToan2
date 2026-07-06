@@ -85,6 +85,7 @@ export const HomePage: React.FC = () => {
           section={getSection('bang-gia')}
           priceTable={getPriceTable('bang-gia')}
           settings={settings}
+          showTable={false}
         />
 
         {/* 2. Giới Thiệu Section (#gioi-thieu) */}
@@ -104,9 +105,9 @@ export const HomePage: React.FC = () => {
           section={getSection('bao-cao-tai-chinh')}
           priceTable={getPriceTable('bao-cao-tai-chinh')}
           settings={settings}
+          showTable={false}
         />
 
-        {/* 7. Đăng Ký Tư Vấn Form (#lien-he) */}
         <ContactSection />
       </main>
 

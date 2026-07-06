@@ -6,9 +6,10 @@ interface ServicePricingProps {
   section: Section | null;
   priceTable: PriceTable | null;
   settings: Setting | null;
+  showTable?: boolean;
 }
 
-export const ServicePricing: React.FC<ServicePricingProps> = ({ section, priceTable, settings }) => {
+export const ServicePricing: React.FC<ServicePricingProps> = ({ section, priceTable, settings, showTable = true }) => {
   const { lang, t } = useLanguage();
 
   if (!section) return null;
@@ -51,7 +52,7 @@ export const ServicePricing: React.FC<ServicePricingProps> = ({ section, priceTa
         </div>
 
         {/* Dynamic Price Table */}
-        {priceTable && (
+        {showTable && priceTable && (
           <div className="mt-8 bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
             <div className="bg-[#124c8d] text-white py-4 px-6 text-center">
               <h3 className="text-xl font-bold">{(lang === 'vi' ? priceTable.tableName : priceTable.tableNameZh) || priceTable.tableName}</h3>

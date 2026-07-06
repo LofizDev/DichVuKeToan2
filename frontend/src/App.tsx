@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 // Public pages
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
+import ContactPage from './pages/ContactPage';
 
 // Admin pages
 import AdminLayout from './components/admin/AdminLayout';
@@ -34,6 +35,7 @@ function App() {
         {/* Public Routes */}
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/lien-he" element={<ContactPage />} />
 
         {/* Admin Dashboard Protected Routes */}
         <Route
