@@ -70,7 +70,7 @@ npm run dev
 
 ## 🗄️ Tạo Dữ Liệu Mẫu (Seed Database)
 
-Để tạo sẵn dữ liệu hiển thị (Bảng giá, Các gói dịch vụ, Slider banner, Các mục bài viết và tài khoản Admin mặc định), hãy chạy lệnh sau:
+Để tạo sẵn dữ liệu hiển thị (Bảng giá, Các gói dịch vụ, Slider banner, Các mục bài viết và tài khoản Admin mặc định), hãy chạy lệnh sau:d
 ```bash
 cd backend
 npm run seed
@@ -78,5 +78,5 @@ npm run seed
 
 *   **Tài khoản Admin mặc định:**
     *   **Username:** `admin`
-    *   **Password:** `zintaxadmin123`
+    *   **Password:** `zintaxadmin123`d
     *   **Đường dẫn trang quản trị:** `http://localhost:5173/admin`
