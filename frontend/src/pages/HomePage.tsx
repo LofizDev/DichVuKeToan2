@@ -105,7 +105,6 @@ export const HomePage: React.FC = () => {
           section={getSection('bao-cao-tai-chinh')}
           priceTable={getPriceTable('bao-cao-tai-chinh')}
           settings={settings}
-          showTable={false}
         />
 
         <ContactSection />

@@ -38,12 +38,12 @@ export const ServicePricing: React.FC<ServicePricingProps> = ({ section, priceTa
         />
 
         {/* Image in middle */}
-        <div className="flex justify-center mb-10 w-full">
-          <div className="w-full max-w-4xl h-[300px] sm:h-[400px] md:h-[450px] lg:h-[500px] flex items-center justify-center">
+        <div className="flex justify-center mb-8 w-full">
+          <div className="w-full max-w-4xl">
             <img
               src="/assets/images/ke-toan-tron-goi-1.png"
               alt="Kế toán trọn gói"
-              className="max-w-full max-h-full object-contain"
+              className="w-full h-auto rounded-xl shadow-md"
               onError={(e) => {
                 (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=600';
               }}
