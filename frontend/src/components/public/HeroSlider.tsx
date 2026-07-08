@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import type { SliderItem } from '../../types';
 import { useLanguage } from '../../contexts/LanguageContext';
+import { Link } from 'react-router-dom';
+import { mapLink } from '../../utils/link';
 
 interface HeroSliderProps {
   sliders: SliderItem[];
@@ -53,7 +55,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ sliders }) => {
               }}
             />
             {slide.link && (
-              <a href={slide.link} className="absolute inset-0 cursor-pointer" aria-label={altText} />
+              <Link to={mapLink(slide.link)} className="absolute inset-0 cursor-pointer" aria-label={altText} />
             )}
           </div>
         );

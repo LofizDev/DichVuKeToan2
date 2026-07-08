@@ -1,6 +1,8 @@
 import React from 'react';
 import type { ServiceItem } from '../../types';
 import { useLanguage } from '../../contexts/LanguageContext';
+import { Link } from 'react-router-dom';
+import { mapLink } from '../../utils/link';
 
 interface ServiceGridProps {
   services: ServiceItem[];
@@ -46,9 +48,9 @@ export const ServiceGrid: React.FC<ServiceGridProps> = ({ services }) => {
                 {/* Title */}
                 <h3 className="text-lg font-bold text-gray-800 mb-3 group-hover:text-[#124c8d] transition-colors duration-300">
                   {service.link ? (
-                    <a href={service.link} className="hover:underline">
+                    <Link to={mapLink(service.link)} className="hover:underline">
                       {title}
-                    </a>
+                    </Link>
                   ) : (
                     title
                   )}
@@ -61,12 +63,12 @@ export const ServiceGrid: React.FC<ServiceGridProps> = ({ services }) => {
 
                 {/* Action Link */}
                 {service.link && (
-                  <a
-                    href={service.link}
+                  <Link
+                    to={mapLink(service.link)}
                     className="mt-6 text-sm font-semibold text-[#124c8d] hover:text-[#ed1c24] flex items-center gap-1 group-hover:translate-x-1 transition-transform duration-200"
                   >
                     {t('serviceGrid.viewDetail')} &rarr;
-                  </a>
+                  </Link>
                 )}
               </div>
             );
