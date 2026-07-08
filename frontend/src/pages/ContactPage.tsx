@@ -5,7 +5,6 @@ import { useLanguage } from '../contexts/LanguageContext';
 
 // Import public components
 import Header from '../components/public/Header';
-import ContactSection from '../components/public/ContactSection';
 import Footer from '../components/public/Footer';
 import FloatingButtons from '../components/public/FloatingButtons';
 
