@@ -25,13 +25,13 @@ export const Header: React.FC<HeaderProps> = ({ settings }) => {
   }, []);
 
   const navLinks = [
-    { key: 'about', href: '/#gioi-thieu' },
+    { key: 'about', href: '/' },
     { key: 'accounting', href: '/#bang-gia' },
     { key: 'financialReport', href: '/#bao-cao-tai-chinh' },
     { key: 'bookkeeping', href: '/#don-dep-so-sach' },
     { key: 'companySetup', href: '/#thanh-lap-cong-ty' },
     { key: 'services', href: '/#dich-vu' },
-    { key: 'contact', href: '/lien-he' },
+    { key: 'contact', href: '/#lien-he' },
   ];
 
   return (

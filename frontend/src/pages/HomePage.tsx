@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import api from '../services/api';
 import type { Setting, Section, ServiceItem, PriceTable, SliderItem } from '../types';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -18,6 +19,9 @@ import FloatingButtons from '../components/public/FloatingButtons';
 
 export const HomePage: React.FC = () => {
   const { t } = useLanguage();
+  const location = useLocation();
+  const activeHash = location.hash;
+
   const [settings, setSettings] = useState<Setting | null>(null);
   const [sections, setSections] = useState<Section[]>([]);
   const [services, setServices] = useState<ServiceItem[]>([]);
@@ -51,6 +55,11 @@ export const HomePage: React.FC = () => {
     fetchData();
   }, []);
 
+  // Scroll to top immediately when hash changes (no smooth scrolling to match dynamic tab loading)
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [activeHash]);
+
   const getSection = (sectionId: string) => {
     return sections.find((s) => s.sectionId === sectionId) || null;
   };
@@ -70,6 +79,17 @@ export const HomePage: React.FC = () => {
     );
   }
 
+  const knownHashes = [
+    '#gioi-thieu',
+    '#bang-gia',
+    '#bao-cao-tai-chinh',
+    '#don-dep-so-sach',
+    '#thanh-lap-cong-ty',
+    '#dich-vu',
+    '#lien-he'
+  ];
+  const isHome = !activeHash || activeHash === '#' || !knownHashes.includes(activeHash);
+
   return (
     <div className="flex flex-col min-h-screen">
       {/* Header */}
@@ -77,37 +97,66 @@ export const HomePage: React.FC = () => {
 
       {/* Main Content Area */}
       <main className="flex-grow">
-        {/* Banner Carousel */}
-        <HeroSlider sliders={sliders} />
+        {/* Banner Carousel - only on main home landing page */}
+        {isHome && <HeroSlider sliders={sliders} />}
 
         {/* 1. Dịch Vụ Kế Toán Trọn Gói Section (#bang-gia) */}
-        <ServicePricing
-          section={getSection('bang-gia')}
-          priceTable={getPriceTable('bang-gia')}
-          settings={settings}
-          showTable={false}
-        />
+        {(isHome || activeHash === '#bang-gia') && (
+          <div className="animate-section-fade">
+            <ServicePricing
+              section={getSection('bang-gia')}
+              priceTable={getPriceTable('bang-gia')}
+              settings={settings}
+              showTable={false}
+            />
+          </div>
+        )}
 
         {/* 2. Giới Thiệu Section (#gioi-thieu) */}
-        <About section={getSection('gioi-thieu')} />
+        {(isHome || activeHash === '#gioi-thieu') && (
+          <div className="animate-section-fade">
+            <About section={getSection('gioi-thieu')} />
+          </div>
+        )}
 
         {/* 3. 6 Service Boxes Grid (#dich-vu) */}
-        <ServiceGrid services={services} />
+        {(isHome || activeHash === '#dich-vu') && (
+          <div className="animate-section-fade">
+            <ServiceGrid services={services} />
+          </div>
+        )}
 
         {/* 4. Dịch Vụ Thành Lập Công Ty Section (#thanh-lap-cong-ty) */}
-        <CompanySetup section={getSection('thanh-lap-cong-ty')} settings={settings} />
+        {(isHome || activeHash === '#thanh-lap-cong-ty') && (
+          <div className="animate-section-fade">
+            <CompanySetup section={getSection('thanh-lap-cong-ty')} settings={settings} />
+          </div>
+        )}
 
         {/* 5. Dịch Vụ Dọn Dẹp Sổ Sách Section (#don-dep-so-sach) */}
-        <BookkeepingCleanup section={getSection('don-dep-so-sach')} settings={settings} />
+        {(isHome || activeHash === '#don-dep-so-sach') && (
+          <div className="animate-section-fade">
+            <BookkeepingCleanup section={getSection('don-dep-so-sach')} settings={settings} />
+          </div>
+        )}
 
         {/* 6. Dịch Vụ Báo Cáo Tài Chính Section (#bao-cao-tai-chinh) */}
-        <FinancialReport
-          section={getSection('bao-cao-tai-chinh')}
-          priceTable={getPriceTable('bao-cao-tai-chinh')}
-          settings={settings}
-        />
+        {(isHome || activeHash === '#bao-cao-tai-chinh') && (
+          <div className="animate-section-fade">
+            <FinancialReport
+              section={getSection('bao-cao-tai-chinh')}
+              priceTable={getPriceTable('bao-cao-tai-chinh')}
+              settings={settings}
+            />
+          </div>
+        )}
 
-        <ContactSection />
+        {/* 7. Đăng ký tư vấn / Liên hệ (#lien-he) */}
+        {(isHome || activeHash === '#lien-he') && (
+          <div className="animate-section-fade">
+            <ContactSection />
+          </div>
+        )}
       </main>
 
       {/* Footer and Map Info */}
@@ -118,4 +167,5 @@ export const HomePage: React.FC = () => {
     </div>
   );
 };
+
 export default HomePage;
