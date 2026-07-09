@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, PhoneCall } from 'lucide-react';
 import type { Setting } from '../../types';
 import { useLanguage } from '../../contexts/LanguageContext';
+import { Link } from 'react-router-dom';
 
 interface HeaderProps {
   settings: Setting | null;
@@ -54,7 +55,7 @@ export const Header: React.FC<HeaderProps> = ({ settings }) => {
       {/* Main Header / Logo */}
       <div className="bg-white border-b border-gray-100 transition-all duration-300">
         <div className="relative w-full flex items-center">
-          <a href="#" className="w-full block bg-white">
+          <Link to="/" className="w-full block bg-white">
             <img
               src={settings?.logoUrl ? settings.logoUrl : '/assets/images/logo.png'}
               alt={(lang === 'vi' ? settings?.siteName : settings?.siteNameZh) || settings?.siteName || 'Kế Toán Chuyên Nghiệp'}
@@ -65,7 +66,7 @@ export const Header: React.FC<HeaderProps> = ({ settings }) => {
                 target.src = '/assets/images/logo.png';
               }}
             />
-          </a>
+          </Link>
 
           {/* Mobile menu trigger */}
           <button
@@ -88,12 +89,12 @@ export const Header: React.FC<HeaderProps> = ({ settings }) => {
           <ul className="hidden lg:flex items-center gap-0.5 h-full">
             {navLinks.map((link) => (
               <li key={link.key} className="h-full flex items-center">
-                <a
-                  href={link.href}
+                <Link
+                  to={link.href}
                   className="px-2.5 py-1.5 text-white font-semibold text-[11px] xl:text-xs tracking-wider uppercase hover:bg-white/10 rounded transition-all duration-200 whitespace-nowrap"
                 >
                   {t('nav.' + link.key)}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -117,12 +118,12 @@ export const Header: React.FC<HeaderProps> = ({ settings }) => {
                 <img src="/assets/images/cotrungquoc.png" alt="中文" className="w-6 h-4 object-cover rounded-sm" />
               </button>
             </div>
-            <a
-              href="/#lien-he"
+            <Link
+              to="/#lien-he"
               className="bg-[#ed1c24] hover:bg-[#c81016] text-white text-[11px] xl:text-xs font-bold uppercase tracking-wider px-3.5 py-2 rounded-full shadow-md hover:shadow-lg transition-all duration-200 hover:-translate-y-0.5 whitespace-nowrap"
             >
               {t('nav.freeConsult')}
-            </a>
+            </Link>
           </div>
 
           {/* Mobile quick contact */}
@@ -146,12 +147,12 @@ export const Header: React.FC<HeaderProps> = ({ settings }) => {
                   <img src="/assets/images/cotrungquoc.png" alt="中文" className="w-5 h-3.5 object-cover rounded-sm" />
                 </button>
               </div>
-              <a
-                href="/#lien-he"
+              <Link
+                to="/#lien-he"
                 className="bg-[#ed1c24] text-white text-[10px] sm:text-xs font-bold uppercase px-2.5 py-1 rounded"
               >
                 {t('nav.consult')}
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -177,13 +178,13 @@ export const Header: React.FC<HeaderProps> = ({ settings }) => {
               <ul className="mt-6 flex flex-col gap-1">
                 {navLinks.map((link) => (
                   <li key={link.key}>
-                    <a
-                      href={link.href}
+                    <Link
+                      to={link.href}
                       onClick={() => setIsMobileMenuOpen(false)}
                       className="block px-4 py-3 text-[#333] hover:text-[#124c8d] hover:bg-gray-50 rounded-lg text-base font-medium transition-all"
                     >
                       {t('nav.' + link.key)}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -195,13 +196,13 @@ export const Header: React.FC<HeaderProps> = ({ settings }) => {
                 <p className="mt-1">{settings?.phone}</p>
                 <p>{settings?.email}</p>
               </div>
-              <a
-                href="/#lien-he"
+              <Link
+                to="/#lien-he"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="w-full text-center bg-[#124c8d] text-white py-3 rounded-lg font-semibold uppercase text-sm tracking-wider"
               >
                 {t('common.sendRequest')}
-              </a>
+              </Link>
             </div>
           </div>
         </div>

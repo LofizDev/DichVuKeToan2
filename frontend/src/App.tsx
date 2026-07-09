@@ -5,6 +5,12 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import ContactPage from './pages/ContactPage';
+import AboutPage from './pages/AboutPage';
+import AccountingPage from './pages/AccountingPage';
+import FinancialReportPage from './pages/FinancialReportPage';
+import BookkeepingPage from './pages/BookkeepingPage';
+import CompanySetupPage from './pages/CompanySetupPage';
+import ServicesPage from './pages/ServicesPage';
 
 // Admin pages
 import AdminLayout from './components/admin/AdminLayout';
@@ -36,6 +42,12 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/lien-he" element={<ContactPage />} />
+        <Route path="/gioi-thieu" element={<AboutPage />} />
+        <Route path="/ke-toan-tron-goi" element={<AccountingPage />} />
+        <Route path="/bao-cao-tai-chinh" element={<FinancialReportPage />} />
+        <Route path="/don-dep-so-sach" element={<BookkeepingPage />} />
+        <Route path="/thanh-lap-cong-ty" element={<CompanySetupPage />} />
+        <Route path="/dich-vu" element={<ServicesPage />} />
 
         {/* Admin Dashboard Protected Routes */}
         <Route
