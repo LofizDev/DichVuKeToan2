@@ -75,7 +75,7 @@ npm run dev
 cd backend
 npm run seed
 ```
-
+.
 *   **Tài khoản Admin mặc định:**
     *   **Username:** `admin`
     *   **Password:** `zintaxadmin123`d
