@@ -10,7 +10,8 @@ import {
   Inbox,
   LogOut,
   ChevronRight,
-  ShieldCheck
+  ShieldCheck,
+  KeyRound
 } from 'lucide-react';
 import api from '../../services/api';
 
@@ -51,6 +52,7 @@ export const AdminLayout: React.FC = () => {
     { label: 'Bảng giá', path: '/admin/price-tables', icon: <TableProperties size={20} /> },
     { label: 'Banner Sliders', path: '/admin/sliders', icon: <Images size={20} /> },
     { label: 'Tin nhắn liên hệ', path: '/admin/contacts', icon: <Inbox size={20} /> },
+    { label: 'Đổi mật khẩu', path: '/admin/change-password', icon: <KeyRound size={20} /> },
   ];
 
   return (

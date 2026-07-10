@@ -56,10 +56,10 @@ export const ServiceGrid: React.FC<ServiceGridProps> = ({ services }) => {
                   )}
                 </h3>
 
-                {/* Description */}
-                <p className="text-gray-500 text-sm leading-relaxed flex-grow">
-                  {description}
-                </p>
+                <div 
+                  className="text-gray-500 text-sm leading-relaxed flex-grow"
+                  dangerouslySetInnerHTML={{ __html: description.split('<div id="editorjs-data"')[0] }}
+                />
 
                 {/* Action Link */}
                 {service.link && (

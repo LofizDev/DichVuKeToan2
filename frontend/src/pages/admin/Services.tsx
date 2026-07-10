@@ -2,6 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Plus, Edit2, Trash2, Save, X, CheckCircle, AlertCircle } from 'lucide-react';
 import api from '../../services/api';
 import type { ServiceItem } from '../../types';
+import EditorJsField from '../../components/admin/EditorJsField';
+
+const stripHtml = (html: string) => {
+  if (!html) return '';
+  const cleanHtml = html.split('<div id="editorjs-data"')[0];
+  return cleanHtml.replace(/<[^>]*>/g, '').trim();
+};
+
 
 export const Services: React.FC = () => {
   const [services, setServices] = useState<ServiceItem[]>([]);
@@ -189,7 +197,7 @@ export const Services: React.FC = () => {
                       <div>{service.title}</div>
                       <div className="text-xs text-gray-400 font-normal">{service.titleZh || '(Chưa có tiếng Trung)'}</div>
                     </td>
-                    <td className="py-4 px-6 text-gray-500 line-clamp-2 max-w-xs">{service.description}</td>
+                    <td className="py-4 px-6 text-gray-500 line-clamp-2 max-w-xs">{stripHtml(service.description)}</td>
                     <td className="py-4 px-6 font-mono text-xs">{service.link}</td>
                     <td className="py-4 px-6 text-center">
                       <span
@@ -268,27 +276,21 @@ export const Services: React.FC = () => {
                 </div>
               </div>
 
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-1">Mô tả tóm tắt (Tiếng Việt)</label>
-                <textarea
-                  name="description"
-                  value={currentService.description}
-                  onChange={handleChange}
-                  rows={2}
-                  placeholder="Nhập mô tả ngắn gọn bằng Tiếng Việt..."
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-100 outline-none transition-all resize-none"
+              <div className="space-y-4">
+                <EditorJsField
+                  key={`${currentService._id || 'new'}-desc-vi`}
+                  label="Mô tả tóm tắt (Tiếng Việt)"
+                  value={currentService.description || ''}
+                  onChange={(newHtml) => setCurrentService(prev => ({ ...prev, description: newHtml }))}
                 />
               </div>
 
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-1">Mô tả tóm tắt (Tiếng Trung)</label>
-                <textarea
-                  name="descriptionZh"
+              <div className="space-y-4">
+                <EditorJsField
+                  key={`${currentService._id || 'new'}-desc-zh`}
+                  label="Mô tả tóm tắt (Tiếng Trung)"
                   value={currentService.descriptionZh || ''}
-                  onChange={handleChange}
-                  rows={2}
-                  placeholder="Nhập mô tả ngắn gọn bằng Tiếng Trung..."
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-100 outline-none transition-all resize-none"
+                  onChange={(newHtml) => setCurrentService(prev => ({ ...prev, descriptionZh: newHtml }))}
                 />
               </div>
 

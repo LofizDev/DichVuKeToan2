@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Save, CheckCircle, AlertCircle, Eye, Code } from 'lucide-react';
+import { Save, CheckCircle, AlertCircle, Eye, Code, Edit } from 'lucide-react';
 import api from '../../services/api';
 import type { Section } from '../../types';
+import EditorJsField from '../../components/admin/EditorJsField';
 
 export const Sections: React.FC = () => {
   const [sections, setSections] = useState<Section[]>([]);
   const [selectedSection, setSelectedSection] = useState<Section | null>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
-  const [editTab, setEditTab] = useState<'editor' | 'preview'>('editor');
-  const [editTabZh, setEditTabZh] = useState<'editor' | 'preview'>('editor');
+  const [editTab, setEditTab] = useState<'editor-js' | 'html' | 'preview'>('editor-js');
+  const [editTabZh, setEditTabZh] = useState<'editor-js' | 'html' | 'preview'>('editor-js');
   const [status, setStatus] = useState<{ type: 'success' | 'error' | null; text: string }>({
     type: null,
     text: ''
@@ -107,6 +108,7 @@ export const Sections: React.FC = () => {
             {sections.map((section) => (
               <button
                 key={section._id}
+                type="button"
                 onClick={() => setSelectedSection(section)}
                 className={`w-full p-4 text-left hover:bg-gray-50 transition-colors flex flex-col gap-1 ${
                   selectedSection?._id === section._id ? 'bg-blue-50/50 border-l-4 border-[#124c8d]' : ''
@@ -181,9 +183,20 @@ export const Sections: React.FC = () => {
                   <div className="flex border-b border-gray-200 mb-3">
                     <button
                       type="button"
-                      onClick={() => setEditTab('editor')}
+                      onClick={() => setEditTab('editor-js')}
                       className={`px-4 py-2 text-xs font-semibold flex items-center gap-1.5 border-b-2 -mb-[2px] transition-colors ${
-                        editTab === 'editor'
+                        editTab === 'editor-js'
+                          ? 'border-[#124c8d] text-[#124c8d]'
+                          : 'border-transparent text-gray-400 hover:text-gray-600'
+                      }`}
+                    >
+                      <Edit size={14} /> Editor.js (Trực quan)
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setEditTab('html')}
+                      className={`px-4 py-2 text-xs font-semibold flex items-center gap-1.5 border-b-2 -mb-[2px] transition-colors ${
+                        editTab === 'html'
                           ? 'border-[#124c8d] text-[#124c8d]'
                           : 'border-transparent text-gray-400 hover:text-gray-600'
                       }`}
@@ -203,7 +216,16 @@ export const Sections: React.FC = () => {
                     </button>
                   </div>
 
-                  {editTab === 'editor' ? (
+                  {editTab === 'editor-js' && (
+                    <EditorJsField
+                      key={`${selectedSection._id}-vi`}
+                      label=""
+                      value={selectedSection.content}
+                      onChange={(newHtml) => setSelectedSection(prev => prev ? ({ ...prev, content: newHtml }) : null)}
+                    />
+                  )}
+
+                  {editTab === 'html' && (
                     <div>
                       <textarea
                         name="content"
@@ -215,11 +237,13 @@ export const Sections: React.FC = () => {
                       />
                       <p className="text-gray-400 text-xs mt-1">Sử dụng mã HTML chuẩn. Bạn có thể sử dụng các thẻ `&lt;p&gt;`, `&lt;strong&gt;`...</p>
                     </div>
-                  ) : (
+                  )}
+
+                  {editTab === 'preview' && (
                     <div className="border border-gray-200 rounded-lg p-6 bg-gray-50/50 min-h-[200px] text-left overflow-y-auto max-h-[300px]">
                       <div
                         className="prose max-w-none text-gray-600 space-y-4"
-                        dangerouslySetInnerHTML={{ __html: selectedSection.content }}
+                        dangerouslySetInnerHTML={{ __html: selectedSection.content.split('<div id="editorjs-data"')[0] }}
                       />
                     </div>
                   )}
@@ -233,9 +257,20 @@ export const Sections: React.FC = () => {
                   <div className="flex border-b border-gray-200 mb-3">
                     <button
                       type="button"
-                      onClick={() => setEditTabZh('editor')}
+                      onClick={() => setEditTabZh('editor-js')}
                       className={`px-4 py-2 text-xs font-semibold flex items-center gap-1.5 border-b-2 -mb-[2px] transition-colors ${
-                        editTabZh === 'editor'
+                        editTabZh === 'editor-js'
+                          ? 'border-[#124c8d] text-[#124c8d]'
+                          : 'border-transparent text-gray-400 hover:text-gray-600'
+                      }`}
+                    >
+                      <Edit size={14} /> Editor.js (Trực quan)
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setEditTabZh('html')}
+                      className={`px-4 py-2 text-xs font-semibold flex items-center gap-1.5 border-b-2 -mb-[2px] transition-colors ${
+                        editTabZh === 'html'
                           ? 'border-[#124c8d] text-[#124c8d]'
                           : 'border-transparent text-gray-400 hover:text-gray-600'
                       }`}
@@ -255,7 +290,16 @@ export const Sections: React.FC = () => {
                     </button>
                   </div>
 
-                  {editTabZh === 'editor' ? (
+                  {editTabZh === 'editor-js' && (
+                    <EditorJsField
+                      key={`${selectedSection._id}-zh`}
+                      label=""
+                      value={selectedSection.contentZh || ''}
+                      onChange={(newHtml) => setSelectedSection(prev => prev ? ({ ...prev, contentZh: newHtml }) : null)}
+                    />
+                  )}
+
+                  {editTabZh === 'html' && (
                     <div>
                       <textarea
                         name="contentZh"
@@ -267,11 +311,13 @@ export const Sections: React.FC = () => {
                       />
                       <p className="text-gray-400 text-xs mt-1">Sử dụng mã HTML chuẩn. Bạn có thể sử dụng các thẻ `&lt;p&gt;`, `&lt;strong&gt;`...</p>
                     </div>
-                  ) : (
+                  )}
+
+                  {editTabZh === 'preview' && (
                     <div className="border border-gray-200 rounded-lg p-6 bg-gray-50/50 min-h-[200px] text-left overflow-y-auto max-h-[300px]">
                       <div
                         className="prose max-w-none text-gray-600 space-y-4"
-                        dangerouslySetInnerHTML={{ __html: selectedSection.contentZh || '' }}
+                        dangerouslySetInnerHTML={{ __html: (selectedSection.contentZh || '').split('<div id="editorjs-data"')[0] }}
                       />
                     </div>
                   )}

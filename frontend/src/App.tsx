@@ -21,6 +21,7 @@ import Services from './pages/admin/Services';
 import PriceTables from './pages/admin/PriceTables';
 import Sliders from './pages/admin/Sliders';
 import Contacts from './pages/admin/Contacts';
+import ChangePassword from './pages/admin/ChangePassword';
 
 import { LanguageProvider } from './contexts/LanguageContext';
 
@@ -65,6 +66,7 @@ function App() {
           <Route path="price-tables" element={<PriceTables />} />
           <Route path="sliders" element={<Sliders />} />
           <Route path="contacts" element={<Contacts />} />
+          <Route path="change-password" element={<ChangePassword />} />
         </Route>
 
         {/* Fallback redirect to homepage */}
