@@ -7,7 +7,7 @@ Website giới thiệu và quản lý dịch vụ kế toán trọn gói, báo c
 ## 🛠️ Công Nghệ Sử Dụng (Tech Stack)
 
 ### 💻 Frontend:
-*   **React 19**
+*   **React 19**2
 *   **TypeScript**
 *   **Vite 6**
 *   **Tailwind CSS 4**
