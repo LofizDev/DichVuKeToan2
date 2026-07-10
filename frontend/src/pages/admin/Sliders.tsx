@@ -214,8 +214,8 @@ export const Sliders: React.FC = () => {
       {/* Add / Edit Dialog Modal */}
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
-          <div className="bg-white rounded-xl shadow-2xl border border-gray-100 w-full max-w-lg overflow-hidden animate-zoom-in text-left">
-            <div className="bg-gray-50 px-6 py-4 border-b border-gray-100 flex justify-between items-center">
+          <div className="bg-white rounded-xl shadow-2xl border border-gray-100 w-full max-w-lg overflow-hidden animate-zoom-in text-left flex flex-col max-h-[90vh]">
+            <div className="bg-gray-50 px-6 py-4 border-b border-gray-100 flex justify-between items-center shrink-0">
               <h3 className="font-bold text-gray-800 text-base">
                 {isEditing ? 'Chỉnh sửa Banner' : 'Thêm Banner mới'}
               </h3>
@@ -224,7 +224,7 @@ export const Sliders: React.FC = () => {
               </button>
             </div>
 
-            <form onSubmit={handleSubmit} className="p-6 space-y-4">
+            <form onSubmit={handleSubmit} className="p-6 space-y-4 overflow-y-auto flex-grow">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-1">Mô tả altText (Tiếng Việt) *</label>
