@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Save, AlertCircle, CheckCircle, KeyRound } from 'lucide-react';
+import { AlertCircle, CheckCircle, KeyRound } from 'lucide-react';
 import api from '../../services/api';
 
 export const ChangePassword: React.FC = () => {
