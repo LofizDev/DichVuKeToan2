@@ -81,11 +81,11 @@ export const EditorJsField: React.FC<EditorJsFieldProps> = ({
       try {
         // Load EditorJS and its plugins from jsdelivr CDN
         await Promise.all([
-          loadScript('https://cdn.jsdelivr.net/npm/@editorjs/editorjs@2.30.2/dist/editor.min.js'),
-          loadScript('https://cdn.jsdelivr.net/npm/@editorjs/header@2.8.8/dist/bundle.min.js'),
-          loadScript('https://cdn.jsdelivr.net/npm/@editorjs/list@2.1.0/dist/bundle.min.js'),
-          loadScript('https://cdn.jsdelivr.net/npm/@editorjs/quote@2.6.0/dist/bundle.min.js'),
-          loadScript('https://cdn.jsdelivr.net/npm/@editorjs/table@2.3.0/dist/bundle.min.js'),
+          loadScript('https://cdn.jsdelivr.net/npm/@editorjs/editorjs@2.30.2/dist/editorjs.umd.min.js'),
+          loadScript('https://cdn.jsdelivr.net/npm/@editorjs/header@2.8.8/dist/header.umd.min.js'),
+          loadScript('https://cdn.jsdelivr.net/npm/@editorjs/list@2.0.9/dist/editorjs-list.umd.min.js'),
+          loadScript('https://cdn.jsdelivr.net/npm/@editorjs/quote@2.6.0/dist/quote.umd.js'),
+          loadScript('https://cdn.jsdelivr.net/npm/@editorjs/table@2.3.0/dist/table.umd.js'),
           loadScript('https://cdn.jsdelivr.net/npm/editorjs-html@3.4.3/build/edjsHTML.browser.js')
         ]);
 
@@ -107,7 +107,7 @@ export const EditorJsField: React.FC<EditorJsFieldProps> = ({
               inlineToolbar: ['link', 'bold', 'italic']
             },
             list: {
-              class: win.List,
+              class: win.EditorjsList || win.List || win.EditorJSList,
               inlineToolbar: true
             },
             quote: {
